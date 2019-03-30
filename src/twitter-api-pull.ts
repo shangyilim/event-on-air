@@ -65,7 +65,7 @@ export const pullTwitterApi = functions.pubsub
             createdAt: t.created_at,
             approved: searchConfig.autoApprove,
             removed: false,
-            timestamp: moment(t.created_at, "h:mm A - D MMM YYYY").valueOf(),
+            timestamp: moment(t.created_at, "ddd MMM DD hh:mm:ss Z YYYY").valueOf(),
             type: 'twitter',
           })
       );
