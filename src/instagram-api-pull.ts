@@ -50,12 +50,12 @@ export const pullInstagramApi = functions.pubsub
     const recentInstagramPosts = await rp.get(
       `${facebookApi}/${hashtagId}/recent_media?user_id=${
         fbConfig.pageBusinessAccountId
-      }&fields=id,media_url,caption&access_token=${fbConfig.pageAccessToken}`,
+      }&fields=id,media_url,caption,children{media_url}&access_token=${fbConfig.pageAccessToken}`,
       { json: true }
     );
 
     const instagrams = recentInstagramPosts.data
-      .filter((i: Instagram) => i.media_url)
+      .filter((i: Instagram) => i.media_url || i.children)
       .map((i: Instagram) =>
         app
           .firestore()
@@ -64,7 +64,7 @@ export const pullInstagramApi = functions.pubsub
           .set({
             id: i.id,
             text: i.caption,
-            photo: i.media_url,
+            photo: i.media_url || i.children.data[0].media_url,
             approved: searchConfig.autoApprove,
             removed: false,
             timestamp: (new Date()).getTime(),
