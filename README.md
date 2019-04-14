@@ -86,5 +86,31 @@ You must complete the initial setup before continuing.
 - managedPageId (Facebook Page Id)
 - pageBusinessAccountId (Instagram Business Account Id)
 
+# Setup Configurations
+1. Go to Firestore on Firebase console, in the `configs` collection you need to configure the following:
+
+## `configs/client`
+This configures the appearance in the client side app.
+
+| Field        | Description           | Example  |
+| ------------- |-------------|-----|
+| backgroundColor | background color of the app | "#039be5"|
+| backgroundImageUrl | the image you want to display as app banner background | "https://cdn.something.com/image.jpg"|
+| displayInterval | how long to wait in seconds before a post is shown | 30 |
+| displayIntervalSize | how many posts to accumulate before displaying them | 1 |
+| lanes | how many lanes to show on the screen. Use higher value for longer screens | 5 |
+| subtitle | what text to show in the banner's subtitle | "event is starting soon" |
+| title | the title to show in the banner | "#cat" |
+
+## `configs/searchConfig`
+This configures what is searched on Twitter/Instagram
+
+| Field | Description | Example|
+|---|---|---|
+|autoApprove| if set to true, will automatically show posts on screen. If false you will need to manually approve posts in the moderate page| true|
+|hashtags| hashtags to search| ["#cat"] |
+
+### Make sure the searchConfig is setup 
+
 # Complete
 You have completed the setup for the serverless part of the app. Now you must configure the client [here](https://github.com/shangyilim/event-on-air-client)
