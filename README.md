@@ -51,6 +51,7 @@ firebase deploy
 npm run setup
 ```
 9. Check Firestore on the Firebase console to ensure that there are collections in the Firestore as well as Firestore rules.
+![schema should be populated](https://res.cloudinary.com/shangyilim/image/upload/c_scale,w_707/v1555241595/schema.png)
 10. In Firestore, you should see a `admins` collection. Add a new admin with your Google account with **your email as the document key**.
 
 ![adding admin to firestore](http://res.cloudinary.com/shangyilim/image/upload/c_scale,w_386/v1555234779/admin-setup.png)
