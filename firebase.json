@@ -9,8 +9,5 @@
   "firestore": {
     "rules": "firestore.rules",
     "indexes": "firestore.indexes.json",
-    "predeploy": [
-      "npm --prefix \"functions\" run setup"
-    ]
   }
 }
