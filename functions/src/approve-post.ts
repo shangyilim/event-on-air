@@ -7,9 +7,9 @@ export const approveTwitterPosts = functions.firestore
   .onUpdate(async (change, context) => {
     const tweetId = context.params.id;
 
-    const tweet = change.after.data()!;
+    const tweet = change.after!.data()!;
 
-    if (change.before.data()!.approved || !tweet.approved) {
+    if (change.before!.data()!.approved || !tweet.approved) {
       return false;
     }
 
@@ -29,9 +29,9 @@ export const approveInstagramPosts = functions.firestore
 .onUpdate(async (change, context) => {
   const instagramId = context.params.id;
 
-  const instagram = change.after.data()!;
+  const instagram = change.after!.data()!;
 
-  if (change.before.data()!.approved || !instagram.approved) {
+  if (change.before!.data()!.approved || !instagram.approved) {
     return false;
   }
 
