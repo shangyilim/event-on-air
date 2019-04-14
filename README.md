@@ -112,5 +112,6 @@ This configures what is searched on Twitter/Instagram
 
 ### Make sure the searchConfig is setup 
 
-# Complete
-You have completed the setup for the serverless part of the app. Now you must configure the client [here](https://github.com/shangyilim/event-on-air-client)
+# Next Step: Configure Client
+You have completed the setup for the serverless part of the app. 
+Now you must configure the client [here](https://github.com/shangyilim/event-on-air-client)
