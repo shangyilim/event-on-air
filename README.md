@@ -55,6 +55,7 @@ npm run setup
 10. In Firestore, you should see a `admins` collection. Add a new admin with your Google account with **your email as the document key**.
 
 ![adding admin to firestore](http://res.cloudinary.com/shangyilim/image/upload/c_scale,w_386/v1555234779/admin-setup.png)
+10. Go to the Firebase console and enable Google authentication in Firebase Authentication.
 
 # Twitter setup
 1. Apply for a Twitter developer account. Be sure to explain clearly what you are using it for. It will take a few days to approve.
