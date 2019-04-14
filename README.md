@@ -69,7 +69,12 @@ firebase deploy --only functions
 # Instagram Setup
 You must complete the initial setup before continuing.
 1. [Create an business account on Instagram and link it to your Facebook Page.](https://www.freelogoservices.com/blog/2018/02/20/how-to-set-up-an-instagram-account-for-your-business/)
-2. Create a Facebook App and follow the guide [here](https://developers.facebook.com/docs/instagram-api/getting-started)
+2. Create a Facebook App. Get the App Id and App Secret. Remember this information.
+3. Add Facebook Login product to your app.
+4. Go to [API Explorer](https://developers.facebook.com/tools/explorer) and select your newly created app.
+5. Add permissions to the api explorer: `instagram_basic` `manage_pages`. Click get access token. Ignore the warning.
+6. Change the url in the API Explorer to `me/accounts` then click submit. Search for the pages that you have linked to Instagram. Remember the Page Id.
+7. Using the Page Id, Change the url in the API Explore to `/{page-id}?fields=instagram_business_account`, then click submit. Remember the Instagram Business Account Id
 3. You should be able to get the following information. Keep this information, you will need it in step 4.
 - Facebook App Id
 - Facebook App Secret
