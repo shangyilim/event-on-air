@@ -1,0 +1,40 @@
+service cloud.firestore {
+  match /databases/{database}/documents {
+  	match /configs/searchConfig{
+    	allow read: if isUserAdmin();
+      allow write: if isUserAdmin();
+    }
+    
+    match /configs/fbConfig {
+    	allow read: if isUserAdmin();
+      allow write: if isUserAdmin();
+    }
+    
+    match /tweets/{tweet} {
+    	allow read: if isUserAdmin();
+      allow write: if isUserAdmin();
+    }
+    match /instagrams/{tweet} {
+    	allow read: if isUserAdmin();
+      allow write: if isUserAdmin();
+    }
+    
+  	match /configs/client{
+    	allow read: if true;
+      allow write: if isUserAdmin();
+    }
+  	match /admins/{users}{
+    	allow read: if false;
+      allow write: if false;
+    }
+    
+    match /posts/{post} {
+    	allow read: if true;
+      allow write: if false;
+    }
+    
+    function isUserAdmin(){
+    	return exists(/databases/$(database)/documents/admins/$(request.auth.token.email));
+    }
+  }
+}

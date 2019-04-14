@@ -6,16 +6,17 @@
     "serve": "npm run build && firebase serve --only functions",
     "shell": "npm run build && firebase functions:shell",
     "start": "npm run shell",
+    "setup": "npm run build && node lib/setup.js",
     "deploy": "firebase deploy --only functions",
     "logs": "firebase functions:log"
   },
   "main": "lib/index.js",
   "dependencies": {
     "@types/request-promise": "^4.1.42",
+    "firebase": "^5.9.4",
     "firebase-admin": "^6.0.0",
     "firebase-functions": "^2.1.0",
     "moment": "^2.24.0",
-    "puppeteer": "^1.13.0",
     "request": "^2.88.0",
     "request-promise": "^4.2.4"
   },

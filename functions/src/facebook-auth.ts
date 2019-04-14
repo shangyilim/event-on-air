@@ -7,8 +7,8 @@ const fbUrl = "https://graph.facebook.com/v2.10";
 export const generateFbPermanentPageToken = functions.firestore
   .document("configs/fbConfig")
   .onUpdate(async (change, context) => {
-    const before = change.before!.data() as any;
-    const after = change.after!.data() as any;
+    const before = change.before.data() as any;
+    const after = change.after.data() as any;
 
     if (before.userAccessToken === after.userAccessToken) {
       console.log("skipping invocation due to unchanged accessToken");
@@ -60,7 +60,7 @@ export const generateFbPermanentPageToken = functions.firestore
 
     const pageBusinessAccountId = pageInfo.instagram_business_account.id;
 
-    return change.after!.ref.update({
+    return change.after.ref.update({
       pageAccessToken,
       pageBusinessAccountId,
     });

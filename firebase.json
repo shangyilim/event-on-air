@@ -1,8 +1,16 @@
 {
   "functions": {
     "predeploy": [
-      "npm --prefix \"$RESOURCE_DIR\" run lint",
-      "npm --prefix \"$RESOURCE_DIR\" run build"
+      "npm --prefix \"functions\" run lint",
+      "npm --prefix \"functions\" run build"
+    ],
+    "source": "functions"
+  },
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json",
+    "predeploy": [
+      "npm --prefix \"functions\" run setup"
     ]
   }
 }
