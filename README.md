@@ -8,12 +8,13 @@ This repository is the backend of the app that runs on Firebase Cloud Functions 
 
 
 # Pre-requisites
-1. Since the app pulls data from Twitter, you must apply for a twitter developer account [here](https://developer.twitter.com/en/apply-for-access.html)
+1. Since the app pulls data from Twitter, you must apply for a twitter developer account [here](https://developer.twitter.com/en/apply-for-access.html) **it will take a few days to approve**
+2. Since the app pulls data from Instagram, you must have a Instagram Business Account and a Facebook Page
 2. Blaze plan for Firebase is required, since we wil be using Cloud Functions to communitate with external APIs.
 3. Firebase account. (duh)
 
 
-# Initial Set up
+# Initial Setup
 1. Clone the repository
 2. Set up Node.js and the Firebase CLI
 3. For installing Node.js and npm, Node Version Manager is recommended. Once you have Node.js and npm installed, install the Firebase CLI via npm:
@@ -26,7 +27,7 @@ firebase login
 ```
 3. Change the Firebase project with your newly created firebase project
 ```
-firebase use empty-proj
+firebase use project-id
 ```
 4. Go to your Firebase project in the console. In the Database section, click the Get Started button for Cloud Firestore.
 Select **Test mode** for your Cloud Firestore Security Rules.
@@ -41,7 +42,6 @@ const app = firebase.initializeApp({
     messagingSenderId: "messagingSenderId"
 });
 ```
-6. Go to `config.ts` to change the twitter api keys. You should have a developer account with twitter.
 7. Deploy the functions and security rules to Firebase.
 ```
 firebase deploy
@@ -50,6 +50,33 @@ firebase deploy
 ```
 npm run setup
 ```
+9. Check Firestore on the Firebase console to ensure that there are collections in the Firestore as well as Firestore rules.
+10. In Firestore, you should see a `admins` collection. Add a new admin with your Google account with **your email as the document key**.
+
+![adding admin to firestore](http://res.cloudinary.com/shangyilim/image/upload/c_scale,w_386/v1555234779/admin-setup.png)
+
+# Twitter setup
+1. Apply for a Twitter developer account. Be sure to explain clearly what you are using it for. It will take a few days to approve.
+2. Go to `config.ts` to change the twitter api keys.
+3. Deploy functions
+```
+firebase deploy --only functions
+```
 
 # Instagram Setup
 You must complete the intial setup before continuing.
+1. [Create an business account on Instagram and link it to your Facebook Page.](https://www.freelogoservices.com/blog/2018/02/20/how-to-set-up-an-instagram-account-for-your-business/)
+2. Create a Facebook App and follow the guide [here](https://developers.facebook.com/docs/instagram-api/getting-started)
+3. You should be able to get the following information. Keep this information, you will need it in step 4.
+- Facebook App Id
+- Facebook App Secret
+- Facebook Page Id
+- Instagram Business Account Id
+4. Go to Firestore, and update the values in `configs/fbConfig`. Update these fields:
+- appId (Facebook App Id)
+- appSecret (Facebook App Secret)
+- managedPageId (Facebook Page Id)
+- pageBusinessAccountId (Instagram Business Account Id)
+
+# Complete
+You have completed the setup for the serverless part of the app. Now you must configure the client [here](https://github.com/shangyilim/event-on-air-client)
