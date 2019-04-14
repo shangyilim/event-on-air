@@ -64,7 +64,7 @@ firebase deploy --only functions
 ```
 
 # Instagram Setup
-You must complete the intial setup before continuing.
+You must complete the initial setup before continuing.
 1. [Create an business account on Instagram and link it to your Facebook Page.](https://www.freelogoservices.com/blog/2018/02/20/how-to-set-up-an-instagram-account-for-your-business/)
 2. Create a Facebook App and follow the guide [here](https://developers.facebook.com/docs/instagram-api/getting-started)
 3. You should be able to get the following information. Keep this information, you will need it in step 4.
