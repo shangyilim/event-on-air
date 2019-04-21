@@ -58,7 +58,7 @@ export const pullTwitterApi = functions.pubsub
           .set({
             id: t.id,
             text: t.text.replace(/https:\/\/t.co\/\w*$/, ""),
-            photo: t.entities.media[0].media_url_https,
+            photo: t.entities.media ? t.entities.media[0].media_url_https: null,
             name: t.user.name,
             username: t.user.screen_name,
             profilePic: t.user.profile_image_url_https,

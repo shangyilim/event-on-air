@@ -38,6 +38,7 @@ async function initialize() {
             lanes: 5,
             subtitle: eventHashtag,
             title: "Event title",
+            startSpacewalk: false,
         });
     console.log('created clientConfig');
     await app.firestore()

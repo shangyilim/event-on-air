@@ -6,7 +6,7 @@ interface TweetMedia {
 }
 
 interface Entities {
-    media: TweetMedia[],
+    media?: TweetMedia[],
 }
 
 interface TwitterUser {
