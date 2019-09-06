@@ -34,7 +34,8 @@ export const pullTwitterApi = functions.pubsub
     console.log('searchConfig', JSON.stringify(searchConfig));
     const queryParams = {
       q: encodeURIComponent(searchConfig.hashtags.join(" OR ")),
-      result_type: "recent"
+      result_type: "recent",
+      tweet_mode: "extended"
     };
 
     const bearerToken = await getBearerToken();
