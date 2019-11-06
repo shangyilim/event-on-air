@@ -56,8 +56,17 @@ export const pullInstagramApi = functions.pubsub
 
     const instagrams = recentInstagramPosts.data
       .filter((i: Instagram) => i.media_url || i.children)
-      .map((i: Instagram) =>
-        app
+      .map(async (i: Instagram) => {
+        // TO-DO: find a way to not read firestore to check if document exist, 
+        // maybe moving the data to real time db might be a better option.
+    
+        const doc = await app.firestore().doc(`posts/${i.id}`).get();
+
+        if(doc.exists) {
+          return ;
+        }
+
+        return app
           .firestore()
           .collection(searchConfig.autoApprove ? "posts":"instagrams")
           .doc(`${i.id}`)
@@ -69,7 +78,8 @@ export const pullInstagramApi = functions.pubsub
             removed: false,
             timestamp: (new Date()).getTime(),
             type: 'instagram'
-          })
+          });
+        }
       );
 
     return Promise.all(instagrams);
